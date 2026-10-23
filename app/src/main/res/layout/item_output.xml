@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 成品列表的一行：文件名 + 大小/时长 + 状态 + 行内播放/更多 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingTop="10dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/out_seq"
+        android:layout_width="26dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/text_sub"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/out_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_main"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/out_meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_sub"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/out_play"
+        style="@style/CtlBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:minWidth="46dp"
+        android:text="@string/output_play"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/out_more"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="⋮"
+        android:textColor="@color/text_sub"
+        android:textSize="16sp" />
+</LinearLayout>
