@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  后台运行设置（防杀后台引导页）。
+
+  为什么做成独立 Activity 而不是底部 Sheet：
+  1) 每一项都要跳到系统设置去改，用户跳出去再回来，Sheet 早就被系统回收了，
+     状态没法在回来时刷新；Activity 有 onResume，能自动重新判定一遍。
+  2) 这一页有解释文字 + 4 个检查项，内容超过 Sheet 的 70% 上限会被截断。
+  3) 用户可能从任务中心/书架以外的入口进来，Sheet 依附的 Activity 不一定活着。
+
+  注意：容器标签全部是 LinearLayout/ScrollView。
+  v1.4.1 刚修过一次闪退 —— <View> 里塞子视图，真机 inflate 抛 ClassCastException，
+  aapt2 编译期完全不报错。这里不要再犯。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- 顶栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="10dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/ka_back"
+            style="@style/IconBtn"
+            android:text="‹" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:text="@string/keepalive_title"
+            android:textColor="@color/text_main"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="14dp"
+            android:paddingTop="12dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="16dp">
+
+            <!-- 为什么要有这一页：用大白话解释，不照抄系统文案 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_hint_box"
+                android:lineSpacingExtra="3dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="10dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="10dp"
+                android:text="@string/keepalive_intro"
+                android:textColor="@color/accent"
+                android:textSize="12sp" />
+
+            <!-- 汇总条：一眼看出还差几项 -->
+            <TextView
+                android:id="@+id/ka_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/text_main"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <!-- 检查项 1：电池优化白名单 -->
+            <LinearLayout
+                android:id="@+id/row_battery"
+                style="@style/KeepAliveRow">
+
+                <LinearLayout
+                    style="@style/KeepAliveTextCol">
+
+                    <TextView
+                        style="@style/KeepAliveItemTitle"
+                        android:text="@string/ka_item_battery" />
+
+                    <TextView
+                        style="@style/KeepAliveItemDesc"
+                        android:text="@string/ka_item_battery_desc" />
+
+                    <TextView
+                        android:id="@+id/tv_battery_state"
+                        style="@style/KeepAliveState" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_battery_go"
+                    style="@style/KeepAliveGo" />
+            </LinearLayout>
+
+            <!-- 检查项 2：厂商自启动 / 后台管理（无公开 API，只能引导用户自己看） -->
+            <LinearLayout
+                android:id="@+id/row_autorun"
+                style="@style/KeepAliveRow">
+
+                <LinearLayout
+                    style="@style/KeepAliveTextCol">
+
+                    <TextView
+                        style="@style/KeepAliveItemTitle"
+                        android:text="@string/ka_item_autorun" />
+
+                    <TextView
+                        style="@style/KeepAliveItemDesc"
+                        android:text="@string/ka_item_autorun_desc" />
+
+                    <TextView
+                        android:id="@+id/tv_autorun_state"
+                        style="@style/KeepAliveState" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_autorun_go"
+                    style="@style/KeepAliveGo" />
+            </LinearLayout>
+
+            <!-- 检查项 3：悬浮窗 / 允许后台弹出界面（也是悬浮窗功能的开关位） -->
+            <LinearLayout
+                android:id="@+id/row_overlay"
+                style="@style/KeepAliveRow">
+
+                <LinearLayout
+                    style="@style/KeepAliveTextCol">
+
+                    <TextView
+                        style="@style/KeepAliveItemTitle"
+                        android:text="@string/ka_item_overlay" />
+
+                    <TextView
+                        style="@style/KeepAliveItemDesc"
+                        android:text="@string/ka_item_overlay_desc" />
+
+                    <TextView
+                        android:id="@+id/tv_overlay_state"
+                        style="@style/KeepAliveState" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_overlay_go"
+                    style="@style/KeepAliveGo" />
+            </LinearLayout>
+
+            <!-- 检查项 4：前台服务通知是否被允许（被禁了用户就看不到进度，只能干等） -->
+            <LinearLayout
+                android:id="@+id/row_notify"
+                style="@style/KeepAliveRow">
+
+                <LinearLayout
+                    style="@style/KeepAliveTextCol">
+
+                    <TextView
+                        style="@style/KeepAliveItemTitle"
+                        android:text="@string/ka_item_notify" />
+
+                    <TextView
+                        style="@style/KeepAliveItemDesc"
+                        android:text="@string/ka_item_notify_desc" />
+
+                    <TextView
+                        android:id="@+id/tv_notify_state"
+                        style="@style/KeepAliveState" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_notify_go"
+                    style="@style/KeepAliveGo" />
+            </LinearLayout>
+
+            <!-- 纯文字兜底：所有跳转都失败时，用户至少知道该去哪手动找 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="3dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="@string/ka_manual_hint"
+                android:textColor="@color/text_sub"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
