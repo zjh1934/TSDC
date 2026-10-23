@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 完整状态卡：从常驻 180dp 降级成按需弹出的 Sheet -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <View
+        android:layout_width="38dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_grip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="18dp"
+        android:paddingTop="4dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/badge_status"
+            style="@style/StatusBadge"
+            android:text="○" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/StatusTitle"
+            android:layout_marginLeft="8dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_current"
+        style="@style/StatusCurrent"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="18dp"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_track" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="18dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/StatLabel"
+                android:text="@string/stat_done" />
+
+            <TextView
+                android:id="@+id/stat_done"
+                style="@style/StatValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/StatLabel"
+                android:text="@string/stat_failed" />
+
+            <TextView
+                android:id="@+id/stat_failed"
+                style="@style/StatValue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/StatLabel"
+                android:text="@string/stat_eta" />
+
+            <TextView
+                android:id="@+id/stat_eta"
+                style="@style/StatValue" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="18dp"
+        android:lineSpacingExtra="2dp"
+        android:textColor="@color/text_sub"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/btn_view_failure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_row_press"
+        android:paddingLeft="10dp"
+        android:paddingTop="8dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="8dp"
+        android:text="@string/view_failure"
+        android:textColor="@color/danger"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/sheet_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/done"
+        android:textColor="@color/primary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+</LinearLayout>
