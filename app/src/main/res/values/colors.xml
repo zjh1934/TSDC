@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#F5F3EE</color>
+    <color name="card">#FFFFFF</color>
+    <color name="primary">#2F6F4E</color>
+    <color name="primary_dark">#245740</color>
+    <color name="accent">#C9782F</color>
+    <color name="text_main">#23262B</color>
+    <color name="text_sub">#7A8089</color>
+    <color name="line">#E3DFD7</color>
+    <color name="highlight">#FFE08A</color>
+    <color name="chip_on">#2F6F4E</color>
+    <color name="chip_off">#ECEAE4</color>
+    <color name="danger">#B23A3A</color>
+    <color name="cover_a">#4A6FA5</color>
+    <color name="cover_b">#7C5C9E</color>
+
+    <!-- 状态文字色：复用 badge 体系，不另造一套 -->
+    <color name="ok_text">#2F6F4E</color>
+    <color name="warn_text">#C9782F</color>
+
+    <!-- v1.2 状态体系 -->
+    <color name="track">#E3DFD7</color>
+    <color name="badge_idle">#7A8089</color>
+    <color name="badge_running">#C9782F</color>
+    <color name="badge_done">#2F6F4E</color>
+    <color name="badge_partial">#C9782F</color>
+    <color name="badge_fail">#B23A3A</color>
+    <color name="playbar_bg">#23262B</color>
+    <color name="playbar_fg">#F5F3EE</color>
+    <!-- 悬浮窗次要文字（章名）：比主文字淡一档，避免小尺寸下抢主信息 -->
+    <color name="playbar_sub">#A8A49C</color>
+</resources>
