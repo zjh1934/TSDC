@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 「文件在哪」：把三个去向和各自可见性一次讲清楚，解决「导出完找不到文件」 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="6dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/where_title"
+        android:textColor="@color/text_main"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:lineSpacingExtra="3dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/where_desc"
+        android:textColor="@color/text_sub"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:id="@+id/where_music"
+        style="@style/SettingRow"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/tv_where_music"
+            style="@style/WhereTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/where_download"
+        style="@style/SettingRow">
+
+        <TextView
+            android:id="@+id/tv_where_download"
+            style="@style/WhereTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/where_internal"
+        style="@style/SettingRow">
+
+        <TextView
+            android:id="@+id/tv_where_internal"
+            style="@style/WhereTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/where_custom"
+        style="@style/SettingRow">
+
+        <TextView
+            android:id="@+id/tv_where_custom"
+            style="@style/WhereTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_copy_public_path"
+        style="@style/BtnGhost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/where_copy_path" />
+</LinearLayout>
