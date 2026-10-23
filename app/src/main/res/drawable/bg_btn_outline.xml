@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 「继续导出」按钮：白底绿描边，跟实心主按钮在同一层里区分开 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" />
+            <solid android:color="#E8F0EB" />
+            <stroke
+                android:width="1.5dp"
+                android:color="@color/primary" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" />
+            <solid android:color="@color/card" />
+            <stroke
+                android:width="1.5dp"
+                android:color="@color/primary" />
+        </shape>
+    </item>
+</selector>
