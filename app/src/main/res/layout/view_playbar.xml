@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  播放条：固定在底部动作条之上，不随列表滚走（用户明确要求）。
+  用 ⌄ 可以收成一枚胶囊，只留播放键+ 曲名，占位从 ~64dp 降到 ~36dp；
+  再点一下或者点胶囊展开。收起后依然能一眼看出「在放什么」。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/playback_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_playbar"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:id="@+id/play_bar_collapsed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="5dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/btn_play_toggle_mini"
+            style="@style/PlayBtn"
+            android:text="▶" />
+
+        <TextView
+            android:id="@+id/tv_play_title_mini"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/playbar_fg"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btn_play_expand"
+            style="@style/PlayBtn"
+            android:layout_marginLeft="6dp"
+            android:text="⌃" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/play_bar_expanded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="6dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btn_play_toggle"
+                style="@style/PlayBtn"
+                android:text="▶" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_play_title"
+                    style="@style/PlayTitle" />
+
+                <TextView
+                    android:id="@+id/tv_play_sub"
+                    style="@style/PlaySub" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_play_fold"
+                style="@style/PlayBtn"
+                android:layout_marginLeft="6dp"
+                android:text="⌄" />
+
+            <TextView
+                android:id="@+id/btn_play_close"
+                style="@style/PlayBtn"
+                android:layout_marginLeft="2dp"
+                android:text="✕" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/play_seek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:max="1000"
+            android:progressDrawable="@drawable/progress_play" />
+    </LinearLayout>
+</LinearLayout>
