@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  合成设置：整块搬进底部 Sheet。
+  原来它是正文里一个「默认折叠但仍占一行」的卡片，展开后又把整个列表挤没，
+  而这些参数（引擎/音色/语速/音调/语言/目录/自检）全是低频操作—— 一次导出只可能改一两个。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <View
+        android:layout_width="38dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_grip" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:paddingTop="4dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="2dp"
+        android:text="@string/setting_group_title"
+        android:textColor="@color/text_main"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_setting_brief"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:paddingTop="2dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="6dp"
+        android:textColor="@color/text_sub"
+        android:textSize="11sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:id="@+id/row_engine"
+                style="@style/SettingRow">
+
+                <TextView
+                    style="@style/SettingLabel"
+                    android:text="@string/setting_engine" />
+
+                <TextView
+                    android:id="@+id/tv_engine"
+                    style="@style/SettingValue" />
+
+                <TextView
+                    style="@style/SettingArrow"
+                    android:text="›" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_voice"
+                style="@style/SettingRow">
+
+                <TextView
+                    style="@style/SettingLabel"
+                    android:text="@string/setting_voice" />
+
+                <TextView
+                    android:id="@+id/tv_voice"
+                    style="@style/SettingValue" />
+
+                <TextView
+                    style="@style/SettingArrow"
+                    android:text="›" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingRow">
+
+                <TextView
+                    style="@style/SettingLabel"
+                    android:text="@string/setting_rate" />
+
+                <TextView
+                    android:id="@+id/btn_rate_dec"
+                    style="@style/SmallBtn"
+                    android:text="−" />
+
+                <TextView
+                    android:id="@+id/tv_rate"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_rate_inc"
+                    style="@style/SmallBtn"
+                    android:text="+" />
+
+                <SeekBar
+                    android:id="@+id/bar_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:max="25"
+                    android:progressDrawable="@drawable/progress_track" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingRow">
+
+                <TextView
+                    style="@style/SettingLabel"
+                    android:text="@string/setting_pitch" />
+
+                <TextView
+                    android:id="@+id/btn_pitch_dec"
+                    style="@style/SmallBtn"
+                    android:text="−" />
+
+                <TextView
+                    android:id="@+id/tv_pitch"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_pitch_inc"
+                    style="@style/SmallBtn"
+                    android:text="+" />
+
+                <SeekBar
+                    android:id="@+id/bar_pitch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:max="15"
+                    android:progressDrawable="@drawable/progress_track" />
+            </LinearLayout>
+
+            <!-- 试听：放在语速/语调正下方，用户调完顺手就能听。
+                 整块两行 —— 按钮 + 状态说明，说明位置固定，状态文字变长也不会把布局顶变形 -->
+            <LinearLayout
+                android:id="@+id/row_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/btn_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_btn_primary"
+                    android:gravity="center"
+                    android:text="@string/preview_start"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_preview_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="@string/preview_idle_hint"
+                    android:textColor="@color/text_sub"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    style="@style/SettingLabel"
+                    android:text="@string/setting_language" />
+
+                <TextView
+                    android:id="@+id/chip_lang_auto"
+                    style="@style/Chip"
+                    android:text="@string/lang_auto" />
+
+                <TextView
+                    android:id="@+id/chip_lang_zh"
+                    style="@style/Chip"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/lang_zh" />
+
+                <TextView
+                    android:id="@+id/chip_lang_en"
+                    style="@style/Chip"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/lang_en" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_customdir"
+                style="@style/SettingRow">
+
+                <TextView
+                    style="@style/SettingLabel"
+                    android:text="@string/setting_customdir" />
+
+                <TextView
+                    android:id="@+id/tv_customdir"
+                    style="@style/SettingValue" />
+
+                <TextView
+                    style="@style/SettingArrow"
+                    android:text="›" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_sync"
+                style="@style/SettingRow">
+
+                <CheckBox
+                    android:id="@+id/chk_sync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:text="@string/sync_public"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!--
+              悬浮窗开关。用户原话：「悬浮窗它要带开关，可开可关」。
+              它要 SYSTEM_ALERT_WINDOW 权限，是用户很敏感的东西，
+              所以必须能一键关掉，不能默认开着撤不掉。
+            -->
+            <LinearLayout
+                android:id="@+id/row_floating"
+                style="@style/SettingRow"
+                android:focusable="true">
+
+                <CheckBox
+                    android:id="@+id/chk_floating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:text="@string/floating_window"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_floating_hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/floating_need_permission" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_selftest"
+                style="@style/SettingRow">
+
+                <TextView
+                    style="@style/SettingLabel"
+                    android:text="@string/setting_selftest" />
+
+                <TextView
+                    style="@style/SettingValue"
+                    android:text="@string/selftest_hint" />
+
+                <TextView
+                    style="@style/SettingArrow"
+                    android:text="›" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_hint_box"
+                android:lineSpacingExtra="3dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="8dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="8dp"
+                android:text="@string/export_hint"
+                android:textColor="@color/accent"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/sheet_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/done"
+        android:textColor="@color/primary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+</LinearLayout>
