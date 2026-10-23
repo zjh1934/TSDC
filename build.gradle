@@ -1,0 +1,18 @@
+// 仅为 Android Studio / 命令行构建保留。
+// AIDE 不读 gradle，它直接按 app/src/main 的标准目录结构编译。
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
