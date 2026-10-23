@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  状态条：常驻顶部的一条，不参与滚动。
+  这是「拥挤」改造的核心——原来那张180dp 的状态卡现在压到 ~40dp，
+  进度靠这条 + 顶栏下方的2dp 细线双保险表达，滚到列表底部也不会丢失进度感。
+  点它可以把完整状态卡展开成 Sheet。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/status_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/badge_status"
+        style="@style/StatusBadge"
+        android:text="○" />
+
+    <!-- 合成中显示当前章节；其它状态显示主状态文案 -->
+    <TextView
+        android:id="@+id/tv_status_line"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/text_main"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:textColor="@color/accent"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <!-- 「已完成/部分失败」时才出现的告警角标，点了直接看失败原因 -->
+    <TextView
+        android:id="@+id/btn_fail_badge"
+        style="@style/IconBtn"
+        android:layout_marginLeft="4dp"
+        android:text="!"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/btn_status_expand"
+        style="@style/IconBtn"
+        android:layout_marginLeft="2dp"
+        android:text="⌄" />
+</LinearLayout>
