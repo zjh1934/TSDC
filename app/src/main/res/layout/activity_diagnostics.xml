@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingTop="10dp"
+    android:paddingRight="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tv_sysinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/text_sub"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/chip_all"
+            style="@style/Chip"
+            android:text="@string/diag_all" />
+
+        <TextView
+            android:id="@+id/chip_info"
+            style="@style/Chip"
+            android:layout_marginLeft="5dp"
+            android:text="I" />
+
+        <TextView
+            android:id="@+id/chip_warn"
+            style="@style/Chip"
+            android:layout_marginLeft="5dp"
+            android:text="W" />
+
+        <TextView
+            android:id="@+id/chip_error"
+            style="@style/Chip"
+            android:layout_marginLeft="5dp"
+            android:text="E" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_chip"
+        android:hint="@string/diag_search_hint"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:singleLine="true"
+        android:textColor="@color/text_main"
+        android:textColorHint="@color/text_sub"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_sub"
+        android:textSize="11sp" />
+
+    <ListView
+        android:id="@+id/list_log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1"
+        android:divider="@color/line"
+        android:dividerHeight="1dp"
+        android:fastScrollEnabled="true"
+        android:listSelector="#00000000"
+        android:scrollbars="none"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal" />
+
+    <!--
+      一键复制：出问题时最想要的就是「把日志发过去」，
+      原来的路径是先导出文件再分享出去，中间还隔着一层系统分享面板。
+      这里把整份 Markdown 直接塞进剪贴板，一步到位。
+    -->
+    <TextView
+        android:id="@+id/btn_copy_all"
+        style="@style/BtnPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/diag_copy_all" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_md"
+            style="@style/BtnGhost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/diag_export_md" />
+
+        <TextView
+            android:id="@+id/btn_txt"
+            style="@style/BtnGhost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:text="@string/diag_export_txt" />
+
+        <TextView
+            android:id="@+id/btn_share"
+            style="@style/BtnGhost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:text="@string/diag_share" />
+
+        <TextView
+            android:id="@+id/btn_clear_log"
+            style="@style/BtnGhost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text="@string/diag_clear" />
+    </LinearLayout>
+</LinearLayout>
