@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 右上角 ⋮ 打开的菜单：把低频入口从正文里全部收走 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <View
+        android:layout_width="38dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_grip" />
+
+    <TextView
+        android:id="@+id/sheet_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:paddingTop="4dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="2dp"
+        android:textColor="@color/text_main"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- 一行设置摘要，不用点开就知道当前引擎/语速是什么 -->
+    <TextView
+        android:id="@+id/sheet_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:paddingTop="2dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/text_sub"
+        android:textSize="11sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="6dp">
+
+            <LinearLayout
+                android:id="@+id/row_settings"
+                style="@style/SheetMenuRow">
+
+                <TextView
+                    style="@style/SheetMenuIcon"
+                    android:text="⚙" />
+
+                <TextView
+                    style="@style/SheetMenuLabel"
+                    android:text="@string/menu_settings" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_where"
+                style="@style/SheetMenuRow">
+
+                <TextView
+                    style="@style/SheetMenuIcon"
+                    android:text="📁" />
+
+                <TextView
+                    style="@style/SheetMenuLabel"
+                    android:text="@string/menu_where" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_queue"
+                style="@style/SheetMenuRow">
+
+                <TextView
+                    style="@style/SheetMenuIcon"
+                    android:text="≡" />
+
+                <TextView
+                    style="@style/SheetMenuLabel"
+                    android:text="@string/menu_queue" />
+
+                <TextView
+                    android:id="@+id/tv_queue_hint"
+                    style="@style/SheetMenuHint" />
+            </LinearLayout>
+
+            <!-- 防杀后台引导：放在「合成队列」旁边，因为两者是同一件事的两面
+                 —— 队列是「正在合成什么」，这一项是「别让系统掐断它」 -->
+            <LinearLayout
+                android:id="@+id/row_keepalive"
+                style="@style/SheetMenuRow">
+
+                <TextView
+                    style="@style/SheetMenuIcon"
+                    android:text="⏻" />
+
+                <TextView
+                    style="@style/SheetMenuLabel"
+                    android:text="@string/menu_keepalive" />
+
+                <TextView
+                    android:id="@+id/tv_keepalive_hint"
+                    style="@style/SheetMenuHint" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_failure"
+                style="@style/SheetMenuRow">
+
+                <TextView
+                    style="@style/SheetMenuIcon"
+                    android:text="!" />
+
+                <TextView
+                    style="@style/SheetMenuLabel"
+                    android:text="@string/menu_failure" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_selftest"
+                style="@style/SheetMenuRow">
+
+                <TextView
+                    style="@style/SheetMenuIcon"
+                    android:text="✓" />
+
+                <TextView
+                    style="@style/SheetMenuLabel"
+                    android:text="@string/menu_selftest" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_clean"
+                style="@style/SheetMenuRow">
+
+                <TextView
+                    style="@style/SheetMenuIcon"
+                    android:text="⌫" />
+
+                <TextView
+                    style="@style/SheetMenuLabel"
+                    android:text="@string/menu_clean_all" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/sheet_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/cancel"
+        android:textColor="@color/text_sub"
+        android:textSize="14sp" />
+</LinearLayout>
