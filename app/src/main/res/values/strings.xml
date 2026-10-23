@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">听书导出</string>
+    <string name="title_export">导出音频</string>
+    <string name="title_diagnostics">诊断日志</string>
+    <string name="empty_library">书库空空\n点右下角 + 导入 TXT / EPUB</string>
+    <string name="open_export">导出音频</string>
+    <string name="delete_book">删除</string>
+    <string name="rename_book">重命名</string>
+    <string name="clean_audio">清理已导出音频</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="setting_group_title">合成设置</string>
+    <string name="setting_engine">引擎</string>
+    <string name="setting_voice">音色</string>
+    <string name="setting_rate">语速</string>
+    <string name="setting_pitch">语调</string>
+    <string name="setting_language">语言</string>
+    <string name="setting_customdir">自定义目录</string>
+    <string name="setting_selftest">导出自检</string>
+    <string name="selftest_hint">真合成一句，告诉你能不能出文件</string>
+    <string name="custom_dir_none">未设置（只留在 App 目录）</string>
+    <string name="custom_dir_pick">选一个目录作为搬运目标</string>
+    <string name="custom_dir_pick_desc">导出完自动把 WAV 复制到这里，适合放 SD 卡 / 网盘同步目录</string>
+    <string name="custom_dir_clear">取消自定义目录</string>
+    <string name="custom_dir_why">为什么不能直接导出到那里？</string>
+    <string name="custom_dir_copy_now">把已完成的音频搬过去</string>
+    <string name="custom_dir_why_desc">合成是交给系统里的 TTS 引擎（另一个 App）做的，它只被授权写本 App 的外部专属目录，给别的路径一律报「权限不足」。所以流程是两段：先稳定地落在 App 目录，再原样搬到你指定的目录。这是 Android 的沙箱规则，不是偷懒。</string>
+    <string name="engine_system_default">系统默认</string>
+    <string name="voice_engine_default">引擎默认</string>
+    <string name="lang_auto">自动识别</string>
+    <string name="lang_zh">中文</string>
+    <string name="lang_en">英文</string>
+    <string name="preview_start">▶ 试听效果</string>
+    <string name="preview_stop">■ 停止试听</string>
+    <string name="preview_idle_hint">用当前引擎、音色、语速和语调播一段样文，先听效果再导出</string>
+    <string name="preview_loading">正在启动引擎…</string>
+    <string name="preview_playing">正在试听，再点一次停止</string>
+    <string name="preview_done">试听播放完毕</string>
+    <string name="preview_stopped">已停止试听</string>
+    <string name="preview_engine_dead">试听失败：引擎 15 秒没有任何响应。换个引擎试试。</string>
+    <string name="preview_speak_timeout">试听超时，引擎一直没播完，已自动停止。</string>
+    <string name="preview_voice_missing">选中的音色这个引擎没有，已改用引擎默认音色。</string>
+    <string name="preview_blocked_export">导出进行中：TTS 引擎是系统级共享资源，导出会长时间占着它，此时试听会和导出抢同一个引擎，把正在合成的音频弄坏。所以这里先禁用，等导出结束（或手动停止）再听。</string>
+    <string name="preview_blocked_selftest">自检正在跑，同样会占住引擎，等它跑完再试听。</string>
+    <string name="toast_preview_blocked_export">导出进行中，不能试听</string>
+    <string name="toast_preview_blocked_selftest">自检正在跑，不能试听</string>
+    <string name="toast_selftest_blocked_export">导出进行中，等导出结束（或手动停止）再跑自检</string>
+    <string name="toast_selftest_running">正在自检，要跑 7 次真实合成，耐心等 1~3 分钟…</string>
+    <string name="export_hint">synthesizeToFile 是实时的：10 小时的书就要跑 10 小时。建议插电、连 Wi-Fi、睡前挂机；中断后再进来会自动跳过已完成章节。队列里的任务会一个接一个自动跑完。</string>
+
+    <string name="select_all">全选</string>
+    <string name="invert_sel">反选</string>
+    <string name="only_pending">仅未完成</string>
+    <string name="only_done">仅已完成</string>
+    <string name="start_export">开始导出</string>
+    <string name="enqueue_export">加入队列</string>
+    <string name="stop_export">停止</string>
+    <string name="stop_current">停止当前</string>
+    <string name="clear_queue">清空排队</string>
+    <string name="queue_title">导出任务队列</string>
+    <string name="queue_list_title">全部任务</string>
+    <string name="go_library">回书架</string>
+    <string name="sync_public">完成后同步到公共音乐目录</string>
+    <string name="floating_window">导出时显示悬浮进度窗</string>
+    <string name="floating_need_permission">需授权</string>
+    <string name="floating_granted">已授权</string>
+    <string name="floating_toast_on">已开启悬浮进度窗</string>
+    <string name="floating_toast_off">已关闭悬浮进度窗</string>
+    <string name="floating_ask_permission">还没有悬浮窗权限，去授权</string>
+    <string name="floating_no_settings_page">这台机器找不到悬浮窗设置页，去「应用信息」里手动开启</string>
+
+    
+    <string name="notif_channel">导出任务</string>
+    <string name="notif_channel_done">导出结果</string>
+    <string name="about_text">纯 Java / 零第三方依赖 / 传统 XML View，可在 AIDE 直接打包。\n只做一件事：把 TXT / EPUB 合成 WAV 音频。\n导出的 WAV 不做任何转码，请用 VLC / Audiobookshelf / Poweramp 播放。</string>
+
+    
+    <string name="menu_about">关于 / 协议</string>
+    <string name="menu_export_queue">导出任务队列</string>
+    <string name="menu_diagnostics">诊断日志</string>
+    <string name="menu_settings">合成设置</string>
+    <string name="menu_storage">导出目录信息</string>
+
+    
+    <string name="diag_search_hint">搜索：章节名 / 模块 / 错误关键字</string>
+    <string name="diag_export_md">导出 Markdown</string>
+    <string name="diag_export_txt">导出 TXT</string>
+    <string name="diag_share">分享文件</string>
+    <string name="diag_clear">清空日志</string>
+    <string name="diag_copy_all">一键复制日志</string>
+    <string name="diag_copy_all_hint">直接把整份日志复制到剪贴板，粘贴给我就行，不用再导出文件</string>
+    <string name="diag_copied">日志已复制（%1$s），直接粘贴发送</string>
+    <string name="diag_copy_failed">复制失败：%1$s</string>
+    <string name="diag_exported">已导出到：%1$s</string>
+    <string name="diag_export_failed">导出失败：%1$s</string>
+    <string name="diag_cleared">日志已清空</string>
+    <string name="diag_count">共 %1$d 条</string>
+    <string name="diag_all">全部</string>
+
+    
+    <string name="advanced_title">高级参数（排查问题时才需要动）</string>
+    <string name="advanced_chunk">单块字数预算</string>
+    <string name="advanced_chunk_desc">切小块能降低单次合成超时的概率，但分块越多、拼接开销越大</string>
+    <string name="advanced_slack">超时余量倍数</string>
+    <string name="advanced_slack_desc">引擎越慢越要调大。×3 表示按估算时长的 3 倍等回调</string>
+    <string name="advanced_attempts">单块重试次数</string>
+    <string name="advanced_attempts_desc">某一块失败后最多重试几次。调高会增加总耗时</string>
+    <string name="advanced_verbose">TTS 详细日志</string>
+    <string name="advanced_verbose_desc">记录每一块合成的回调耗时。开着能定位「引擎为什么没反应」，但日志会变大</string>
+    <string name="advanced_loglevel">日志最低级别</string>
+
+    
+    <string name="toast_no_engine">系统里没有可用的 TTS 引擎</string>
+    <string name="toast_exporting_locked">导出进行中，这一区已经锁了</string>
+    <string name="toast_enqueued">已加入队列，当前排在第 %1$d 位</string>
+    <string name="toast_started">已开始，可以锁屏或退出了</string>
+    <string name="toast_stopping">已请求停止，当前这一块合成完就会停下</string>
+    <string name="toast_deleted">已删除：%1$s</string>
+    <string name="toast_audio_cleaned">已清理 %1$s 音频</string>
+    <string name="toast_renamed">已重命名</string>
+    <string name="st_idle">空闲 · 未开始</string>
+    <string name="st_running">正在合成</string>
+    <string name="st_done">全部完成</string>
+    <string name="st_partial">部分完成</string>
+    <string name="st_fail">导出失败 · 没有产出文件</string>
+    <string name="st_stopped">已手动停止</string>
+    <!-- v4.3：上次被系统杀掉后队列恢复了、但服务没自动拉起来时的状态 -->
+    <string name="st_queued">已暂停 · 队列待启动</string>
+    <string name="st_other_book">另一本书正在合成</string>
+    <string name="st_loading">正在读取目录…</string>
+
+    <string name="stat_done">已完成</string>
+    <string name="stat_failed">失败</string>
+    <string name="stat_eta">预计剩余</string>
+    <string name="stat_eta_unknown">—</string>
+    <string name="view_failure">查看失败原因 →</string>
+
+    
+    <string name="tab_chapters_fmt">章节 %1$d</string>
+    <string name="tab_outputs_fmt">成品 %1$d</string>
+
+    
+    <string name="filter_pending">未导出</string>
+    <string name="filter_done">已导出</string>
+    <string name="filter_chapter">选择章节</string>
+    <string name="output_empty_title">还没有成品</string>
+    <string name="output_empty_sub">合成完成的章节会出现在这里，可以直接试听</string>
+    <string name="output_meta">%1$s · %2$s</string>
+    <string name="output_play">试听</string>
+    <string name="output_action_share">分享这个文件</string>
+    <string name="output_action_delete">删除这个文件</string>
+    <string name="output_action_info">文件信息</string>
+    <string name="output_deleted">已删除：%1$s</string>
+    <string name="output_deleted_all">已删除这本书的全部成品，释放 %1$s</string>
+    <string name="output_clean_all">清空全部成品</string>
+    <string name="output_wav">WAV · %1$s</string>
+
+    
+    <string name="playbar_position">%1$s / %2$s</string>
+
+    
+    <string name="where_title">文件在哪</string>
+    <string name="where_desc">合成由系统 TTS 引擎（另一个 App）执行，它只被允许写本App 的目录。所以成品分三处：</string>
+    <string name="where_public_music">音乐 / ListenBook / 书名</string>
+    <string name="where_public_music_sub">文件管理器、播放器都能直接看到</string>
+    <string name="where_public_download">下载 / ListenBook / 书名</string>
+    <string name="where_public_download_sub">同上，多一份，方便在「下载」里找</string>
+    <string name="where_internal">App 内部目录（合成落点）</string>
+    <string name="where_internal_sub">Android 11+ 文件管理器不显示它，属于正常现象</string>
+    <string name="where_custom">自定义目录</string>
+    <string name="where_custom_none">未设置</string>
+    <string name="where_copy_path">复制这条路径</string>
+
+    
+    <string name="book_meta_fmt">%1$s · 共 %2$d 章</string>
+    <string name="book_progress_fmt">已完成 %1$d / %2$d</string>
+    <string name="book_estimate_fmt">全书约 %1$s · 预计占用 %2$s</string>
+    <string name="sel_detail_fmt">已选 %1$d 章 · %2$d 字 · 预计产出 %3$s</string>
+
+    
+    <string name="done">完成</string>
+    <string name="menu_where">文件在哪</string>
+    <string name="menu_queue">合成队列</string>
+    <string name="menu_failure">失败原因</string>
+    <string name="menu_selftest">导出自检</string>
+    <string name="menu_clean_all">清理全部成品</string>
+    <string name="resume_fmt">继续导出（还剩 %1$d 章）</string>
+    <string name="resume_hint_fmt">上次停在第 %1$d 章，已完成 %2$d 章，已勾选的 %3$d 章会接着跑</string>
+    <string name="resume_all_fmt">继续导出（%1$d 章未完成）</string>
+    <string name="meta_fmt">%1$d 章 · 已合成 %2$d</string>
+    <string name="queue_dot_fmt">队列 %1$d</string>
+    <string name="back_library">返回书架</string>
+
+    <!-- ===== 后台运行设置（防杀后台引导） ===== -->
+    <string name="menu_keepalive">后台运行设置</string>
+    <string name="title_keepalive">后台运行设置</string>
+    <string name="keepalive_title">后台运行设置</string>
+    <!-- 顶部解释：讲清「为什么」，而不是让用户照抄系统文案 -->
+    <string name="keepalive_intro">合成一本长书要好几个小时，这期间你会息屏、切走去干别的。手机系统都把App 当成「没用」的东西，会在后台偷偷掐掉它——被掐一次，这本书就得从头再来。\n下面这几项逐个放开，系统就基本不会来打断合成了。每项右边都有按钮，直接跳到对应的系统设置。改完回到这个页面，状态会自动重新判定。</string>
+    <string name="ka_item_battery">电池优化白名单</string>
+    <string name="ka_item_battery_desc">不加白名单时，息屏一会儿系统就会把合成限速甚至暂停，长书基本跑不完</string>
+    <string name="ka_item_autorun">自启动 / 后台管理</string>
+    <string name="ka_item_autorun_desc">各家系统的名字不一样（小米：省电策略→自启动+后台弹窗；华为/ OPPO / vivo：应用启动管理）。系统没开放接口，只能你自己进去看</string>
+    <string name="ka_item_overlay">悬浮窗 / 允许后台弹出界面</string>
+    <string name="ka_item_overlay_desc">放开后合成时能显示悬浮控制条；不给也不影响合成，只是看不到这个开关</string>
+    <string name="ka_item_notify">通知权限</string>
+    <string name="ka_item_notify_desc">通知被关掉的话，合成跑起来你什么提示都收不到，只能反复回来看</string>
+    <string name="ka_state_on">✓ 已开启</string>
+    <string name="ka_state_off">! 未开启</string>
+    <!-- 注意：不能以 ? 开头，aapt2 会把它当成资源引用（"resource attr/? not found"） -->
+    <string name="ka_state_manual">需手动确认</string>
+    <string name="ka_state_na">本机系统无需设置</string>
+    <string name="ka_go">去设置</string>
+    <string name="ka_summary_fmt">%1$d 项已就绪 · %2$d 项待确认</string>
+    <string name="ka_summary_all_ok">全部就绪，合成不会再被系统打断了</string>
+    <!-- 所有跳转都失败时的手写兜底：国产 ROM 砍设置页是必然会遇到的 -->
+    <string name="ka_manual_hint">点「去设置」没反应的话，说明这个系统把那个入口藏起来或改路径了。请手动到「设置 → 应用设置 → 应用管理 → 听书导出」里，把省电策略、无限制自启动、后台运行、通知和悬浮窗都打开。</string>
+    <string name="ka_jump_failed">这台手机没有这个系统设置页，已记入日志。\n请手动到「设置 → 应用管理 → 听书导出」里打开对应开关。</string>
+</resources>
