@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  悬浮进度窗的视图。
+
+  为什么做得这么紧凑：它要常驻在别的 App 上面，挡住人家半个屏幕就变成骚扰了。
+  信息只留三层 —— 书名、进度数字、当前阶段章名，别的都不要。
+  高度刻意压在 70dp 以内，小米/Pixel 这类竖屏也不会遮住半个屏幕。
+
+  注意：这里所有容器都用 LinearLayout（ViewGroup）。
+  千万别用 <View> 装子视图 —— 那是 v1.4 闪退的根因，真机 inflate 直接抛
+  ClassCastException，而 aapt2 编译期完全不报错。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_floating"
+    android:gravity="center_vertical"
+    android:minWidth="176dp"
+    android:orientation="vertical"
+    android:paddingLeft="11dp"
+    android:paddingTop="8dp"
+    android:paddingRight="11dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/fw_book"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxEms="14"
+        android:textColor="@color/playbar_fg"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fw_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/playbar_fg"
+        android:textSize="12sp" />
+
+    <ProgressBar
+        android:id="@+id/fw_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="5dp"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_play" />
+
+    <TextView
+        android:id="@+id/fw_stage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxEms="20"
+        android:textColor="@color/playbar_sub"
+        android:textSize="11sp" />
+</LinearLayout>
