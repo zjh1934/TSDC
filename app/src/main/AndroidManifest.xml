@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.listenbook"
+    android:versionCode="43"
+    android:versionName="4.3">
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="30" />
+
+    <!-- 前台服务：Android 8+ 后台导出必须挂常驻通知 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- 息屏时保持 CPU，避免合成被挂起 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 仅 API<=28 同步到公共音乐目录时需要；29+ 走 MediaStore 无需权限 -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <!--
+      电池优化白名单：ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS 属于「敏感权限」，
+      不声明的话带 package 的跳转 intent 在 Android 8+ 会被系统直接拒绝（SecurityException），
+      表现为「点去设置没反应」。targetSdk<=30 仍可正常申请，不受 Android 11 政策限制。
+    -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!--
+      悬浮窗：后台运行设置页只读它的开关状态并提供跳转，
+      悬浮窗功能本体由另一处实现，这里先占位声明，不写任何相关代码。
+    -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!--
+      Android 11 (API 30) 包可见性：不加这段，targetSdk=30 时
+      TextToSpeech 可能枚举/绑定不到系统里的 TTS 引擎。
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 模块 A：导出音频。只产 WAV，产完可试听。不带 bookId 进来就是任务队列中心 -->
+        <activity
+            android:name=".ui.ExportActivity"
+            android:exported="false"
+            android:label="@string/title_export"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <!-- 诊断日志：看运行流水 + 导出 txt / md -->
+        <activity
+            android:name=".ui.DiagnosticsActivity"
+            android:exported="false"
+            android:label="@string/title_diagnostics"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <!--
+          防杀后台引导页。从 ⋮ 菜单进，用户要跳到系统设置改完再回来，
+          所以必须是独立 Activity（Sheet 弹层跳出去就没了，回来没法刷新状态）。
+        -->
+        <activity
+            android:name=".ui.KeepAliveActivity"
+            android:exported="false"
+            android:label="@string/title_keepalive"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <!--
+          自建的最小 FileProvider：项目零第三方依赖，拿不到 androidx 的 FileProvider，
+          但把诊断日志分享出去必须是 content:// Uri（Android 7+ 禁 file://）。
+        -->
+        <provider
+            android:name=".LogProvider"
+            android:authorities="com.listenbook.diag"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+
+        <!--
+          注意：故意不声明 android:foregroundServiceType。
+          该属性 API 29 才有，mediaProcessing 值要 API 35；
+          targetSdk=30 不受强制类型约束，声明反而在 AIDE 里编译报错。
+        -->
+        <service
+            android:name=".export.ExportService"
+            android:exported="false" />
+    </application>
+
+</manifest>
