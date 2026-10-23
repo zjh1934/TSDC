@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  章节行。副行只在「已导出」时显示真实文件大小与时长，
+  未导出时只显示字数与预计时长 —— 不再把估算的 WAV 大小和真实大小混在一起，
+  之前那种「两个数字长得一样但含义不同」最容易让人以为已经导出了。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp">
+
+    <CheckBox
+        android:id="@+id/chk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ch_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_main"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ch_sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_sub"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- 已导出时的试听按钮；未导出时隐藏 -->
+    <TextView
+        android:id="@+id/ch_play"
+        style="@style/CtlBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:minWidth="42dp"
+        android:text="@string/output_play"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/ch_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:minWidth="42dp"
+        android:gravity="right"
+        android:textColor="@color/primary"
+        android:textSize="11sp" />
+</LinearLayout>
