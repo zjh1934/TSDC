@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 顶栏 ⋮ 左边的小圆点：队列里有任务时才亮，提醒用户点进去看 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/badge_running" />
+    <size
+        android:width="8dp"
+        android:height="8dp" />
+</shape>
